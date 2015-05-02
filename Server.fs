@@ -9,6 +9,7 @@ open System.Collections.Generic
 type OwinEnvironment = {
     httpMethod: string;
     requestBody: Stream;
+    requestPath: string;
     responseBody: Stream;
     responseHeaders: IDictionary<string, string[]>;
     setResponseStatusCode: (int -> unit);
@@ -18,6 +19,7 @@ type OwinEnvironment = {
 let getOwinEnvironment (env: IDictionary<string , obj>) = {
     httpMethod = env.["owin.RequestMethod"] :?> string;
     requestBody = env.["owin.RequestBody"] :?> Stream;
+    requestPath = env.["owin.RequestPath"] :?> string;
     responseBody = env.["owin.ResponseBody"] :?> Stream;
     responseHeaders = env.["owin.ResponseHeaders"] :?> IDictionary<string, string[]>;
     setResponseStatusCode =
@@ -37,11 +39,7 @@ let thePage =
     <title>A first example in F#</title>
     </head>
     <body>
-    <h1>Some title</h1>
-    <form method="POST" action="http://localhost:8888/">
-    <input name=test />
-    <input type=submit />
-    </form>
+    <script src="/dist/src.js"></script>
     </body>
     </html>"""
 
@@ -52,9 +50,16 @@ let handleOwinEnvironment (owin: OwinEnvironment) : unit =
             use reader = new StreamReader(owin.requestBody)
             writer.Write(transform(reader.ReadToEnd()))
         | "GET" ->
-            owin.responseHeaders.["Content-Type"] <- [| "text/html" |]
-            owin.setResponseStatusCode 200
-            writer.Write(thePage)
+            match owin.requestPath with
+                | "/dist/src.js" ->
+                    let content = File.ReadAllText("dist/src.js")
+                    owin.responseHeaders.["Content-Type"] <- [| "text/javascript" |]
+                    owin.setResponseStatusCode 200
+                    writer.Write(content)
+                | _ ->
+                    owin.responseHeaders.["Content-Type"] <- [| "text/html" |]
+                    owin.setResponseStatusCode 200
+                    writer.Write(thePage)
         | _ ->
             printfn "Got other type of request: %s" owin.httpMethod
             owin.setResponseStatusCode 400
@@ -72,7 +77,6 @@ let main argv =
             .New()
             .SetEndPoint(new IPEndPoint(IPAddress.Any, port))
             .SetOwinApp(fun env ->
-                        printfn "Invoked"
                         env
                         |> getOwinEnvironment
                         |> handleOwinEnvironment
