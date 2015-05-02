@@ -1,0 +1,35 @@
+{
+  "name": "purescript-halogen",
+  "homepage": "https://github.com/slamdata/purescript-halogen",
+  "authors": [
+    "Phil Freeman <paf31@cantab.net>"
+  ],
+  "description": "A declarative, type-safe UI library for PureScript",
+  "keywords": [
+    "purescript"
+  ],
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-refs": "~0.1.2",
+    "purescript-simple-dom": "~0.0.2",
+    "purescript-foldable-traversable": "~0.3.0",
+    "purescript-profunctor": "~0.2.1",
+    "purescript-aff": "~0.10.0",
+    "purescript-arrays": "~0.3.3",
+    "purescript-foreign": "~0.4.0",
+    "purescript-nullable": "~0.1.1",
+    "purescript-maps": "~0.3.2",
+    "purescript-bifunctors": "~0.3.1",
+    "purescript-void": "~0.2.0",
+    "purescript-exists": "~0.1.1",
+    "purescript-lists": "~0.6.0",
+    "purescript-integers": "~0.1.0"
+  }
+}
