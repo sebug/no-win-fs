@@ -29,6 +29,6 @@
     "commit": "7d2119130ca9b343785b658fb92102f591d2b280"
   },
   "_source": "git://github.com/purescript/purescript-arrays.git",
-  "_target": "~0.3.3",
+  "_target": "~0.3.0",
   "_originalSource": "purescript-arrays"
 }

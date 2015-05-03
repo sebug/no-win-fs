@@ -28,6 +28,6 @@
     "commit": "bba91eee347ca73ad5ddb0fc868bef77991008b0"
   },
   "_source": "git://github.com/purescript/purescript-strings.git",
-  "_target": "~0.4.3",
+  "_target": "~0.4.1",
   "_originalSource": "purescript-strings"
 }

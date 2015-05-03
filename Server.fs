@@ -31,6 +31,10 @@ let getOwinEnvironment (env: IDictionary<string , obj>) = {
 let transform (request: string) : string =
     sprintf "%s transformed" request
 
+let jsonResult (result: string) : string =
+    let newlinesTransformed = result.Replace("\n", "\\n")
+    sprintf "{ \"transformed\": \"%s\" }" newlinesTransformed
+
 let thePage =
     """
     <!DOCTYPE html>
@@ -48,7 +52,10 @@ let handleOwinEnvironment (owin: OwinEnvironment) : unit =
     match owin.httpMethod with
         | "POST" ->
             use reader = new StreamReader(owin.requestBody)
-            writer.Write(transform(reader.ReadToEnd()))
+            reader.ReadToEnd()
+            |> transform
+            |> jsonResult
+            |> writer.Write
         | "GET" ->
             match owin.requestPath with
                 | "/dist/src.js" ->

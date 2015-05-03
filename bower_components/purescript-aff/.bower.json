@@ -35,6 +35,6 @@
     "commit": "519bcfdbb7129c1f803c693582f9931cfc8b4b03"
   },
   "_source": "git://github.com/slamdata/purescript-aff.git",
-  "_target": "~0.10.0",
+  "_target": "~0.10.1",
   "_originalSource": "purescript-aff"
 }

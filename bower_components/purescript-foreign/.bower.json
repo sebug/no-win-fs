@@ -37,6 +37,6 @@
     "commit": "72eec29eb382b2da6087aba74033c1745460bd63"
   },
   "_source": "git://github.com/purescript/purescript-foreign.git",
-  "_target": "~0.4.0",
+  "_target": "~0.4.2",
   "_originalSource": "purescript-foreign"
 }
