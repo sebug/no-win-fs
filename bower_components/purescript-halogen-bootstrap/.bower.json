@@ -1,0 +1,28 @@
+{
+  "name": "purescript-halogen-bootstrap",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-halogen": "master"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.3.2"
+  },
+  "homepage": "https://github.com/slamdata/purescript-halogen-bootstrap",
+  "_release": "12753f83b5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "12753f83b5dd9b93e8df81aa7ca702c79d451af7"
+  },
+  "_source": "git://github.com/slamdata/purescript-halogen-bootstrap.git",
+  "_target": "master",
+  "_originalSource": "purescript-halogen-bootstrap"
+}

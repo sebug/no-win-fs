@@ -1,0 +1,6 @@
+{
+    "name": "no-win-fs",
+    "dependencies": {
+	"virtual-dom": "*"
+    }
+}
