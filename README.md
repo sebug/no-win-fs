@@ -5,5 +5,6 @@ Compiled and tested on my Mac using Mono latest.
 
 To build
 
+     npm install
      pulp dep update
      ./build.sh
